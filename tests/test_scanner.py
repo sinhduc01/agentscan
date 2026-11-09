@@ -37,6 +37,24 @@ def test_malicious_mcp():
     assert "exfil/raw-ip-url" in ids
 
 
+def test_windows_skill():
+    findings = scan(FIX / "windows-skill")[1]
+    ids = _ids(findings)
+    assert "windows/ps-pipe-shell" in ids
+    assert "windows/invoke-expression" in ids
+    assert "windows/ps-encoded-command" in ids
+    assert "windows/ps-exec-bypass" in ids
+    assert "windows/ps-schtasks-persist" in ids
+    assert "windows/ps-registry-run" in ids
+    assert "windows/webclient-download" in ids
+    assert "windows/ps-broad-remove" in ids
+    assert "windows/certutil-fetch" in ids
+    assert "windows/mshta-exec" in ids
+    assert "windows/bitsadmin-fetch" in ids
+    assert "windows/broad-del" in ids
+    assert "windows/format-drive" in ids
+
+
 def test_agent_docs():
     findings = scan(FIX / "agent-docs")[1]
     ids = _ids(findings)

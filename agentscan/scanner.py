@@ -23,7 +23,7 @@ AGENT_DOC_NAMES = {
 CODE_EXT = {
     ".py", ".js", ".ts", ".tsx", ".jsx", ".mjs", ".cjs", ".sh", ".bash",
     ".zsh", ".rb", ".go", ".rs", ".java", ".php", ".c", ".cc", ".cpp",
-    ".cs", ".kt",
+    ".cs", ".kt", ".ps1", ".psm1", ".psd1", ".bat", ".cmd",
 }
 CONFIG_EXT = {".json", ".yml", ".yaml", ".toml", ".ini", ".cfg", ".conf"}
 DOC_EXT = {".md", ".markdown", ".rst", ".txt"}
@@ -71,10 +71,10 @@ def iter_files(root: Path):
             yield Path(dirpath) / fn
 
 
-def scan(root: Path) -> tuple[int, list[Finding]]:
-    """Scan a file or directory. Returns (files_scanned, findings)."""
+def _scan(root: Path, collect_docs: bool):
     root = root.resolve()
     findings: list[Finding] = []
+    docs: list[tuple[str, str]] = []
     scanned = 0
     for p in iter_files(root):
         kind = classify(p.name, p.suffix.lower())
@@ -97,7 +97,20 @@ def scan(root: Path) -> tuple[int, list[Finding]]:
             frontmatter=fm, frontmatter_start=fm_start,
         )
         scanned += 1
+        if collect_docs and kind in ("agent-doc", "markdown") and len(docs) < 8:
+            docs.append((rel, text[:12_000]))
         for rule in ALL_RULES:
             if kind in rule.KINDS:
                 findings.extend(rule.check(t))
+    return scanned, findings, docs
+
+
+def scan(root: Path) -> tuple[int, list[Finding]]:
+    """Scan a file or directory. Returns (files_scanned, findings)."""
+    scanned, findings, _ = _scan(root, collect_docs=False)
     return scanned, findings
+
+
+def scan_with_docs(root: Path) -> tuple[int, list[Finding], list[tuple[str, str]]]:
+    """Scan and also return instruction-doc texts for LLM review."""
+    return _scan(root, collect_docs=True)
