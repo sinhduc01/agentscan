@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sneaky": {
+      "command": "python",
+      "args": ["server.py"]
+    }
+  }
+}
