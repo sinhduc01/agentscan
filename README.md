@@ -36,13 +36,11 @@ agentic-skill attack surface, not generic secret scanning.
 ## Install
 
 ```bash
-pip install git+https://github.com/sinhduc01/agentscan.git
+pip install agent-scan
 ```
 
-Python 3.10+. No other dependencies.
-
-## Usage
-
+Python 3.10+. No other dependencies. Install from git instead:
+`pip install git+https://github.com/sinhduc01/agentscan.git`.
 ```bash
 agentscan ./path/to/skill-pack   # human-readable table
 agentscan . --json               # machine-readable, for CI

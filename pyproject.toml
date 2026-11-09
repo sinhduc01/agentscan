@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "agentscan"
+name = "agent-scan"
 version = "0.2.0"
 description = "Static security scanner for AI agent skill packs, MCP servers, and agent configs"
 readme = "README.md"
