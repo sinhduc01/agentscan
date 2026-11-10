@@ -11,9 +11,6 @@ requires-python = ">=3.10"
 license = "MIT"
 authors = [{ name = "sinhduc01" }]
 
-[project.urls]
-Repository = "https://github.com/sinhduc01/agentscan"
-Issues = "https://github.com/sinhduc01/agentscan/issues"
 keywords = ["ai-agents", "security", "claude-code", "mcp", "prompt-injection", "skill", "scanner", "audit"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -24,6 +21,10 @@ classifiers = [
     "Topic :: Security",
     "Topic :: Software Development :: Quality Assurance",
 ]
+
+[project.urls]
+Repository = "https://github.com/sinhduc01/agentscan"
+Issues = "https://github.com/sinhduc01/agentscan/issues"
 
 [project.scripts]
 agentscan = "agentscan.cli:main"
