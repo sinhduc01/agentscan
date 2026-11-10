@@ -4,12 +4,16 @@ build-backend = "hatchling.build"
 
 [project]
 name = "agent-vetter"
-version = "0.2.0"
+version = "0.2.1"
 description = "Static security scanner for AI agent skill packs, MCP servers, and agent configs"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
 authors = [{ name = "sinhduc01" }]
+
+[project.urls]
+Repository = "https://github.com/sinhduc01/agentscan"
+Issues = "https://github.com/sinhduc01/agentscan/issues"
 keywords = ["ai-agents", "security", "claude-code", "mcp", "prompt-injection", "skill", "scanner", "audit"]
 classifiers = [
     "Development Status :: 3 - Alpha",

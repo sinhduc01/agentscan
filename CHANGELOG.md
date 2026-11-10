@@ -3,6 +3,14 @@
 All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.1] - 2026-11-10
+
+### Changed
+- PyPI distribution renamed `agent-scan` → `agent-vetter` (PyPI rejects
+  `agent-scan` as too similar to the existing `agentscan` project).
+  Module and CLI remain `agentscan`; install is `pip install agent-vetter`.
+- Added Repository/Issues links to the project metadata.
+
 ## [0.2.0] - 2026-11-10
 
 ### Added
