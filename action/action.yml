@@ -31,7 +31,7 @@ runs:
         if [ "$AGENTSCAN_VERSION" = "git" ]; then
           python -m pip install --quiet "git+https://github.com/sinhduc01/agentscan.git@main"
         else
-          python -m pip install --quiet "agent-scan==$AGENTSCAN_VERSION"
+          python -m pip install --quiet "agent-vetter==$AGENTSCAN_VERSION"
         fi
 
     - name: Run agentscan

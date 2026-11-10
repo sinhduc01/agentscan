@@ -36,7 +36,7 @@ agentic-skill attack surface, not generic secret scanning.
 ## Install
 
 ```bash
-pip install agent-scan
+pip install agent-vetter
 ```
 
 Python 3.10+. No other dependencies. Install from git instead:
